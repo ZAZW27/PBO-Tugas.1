@@ -5,39 +5,39 @@ class WaterVehicle extends Vehicle implements Refuelable {
 
     // Constructor
     public WaterVehicle(String name, int speed, double fuelLevel, boolean  hasPropeller, int stoppedAt) {
-        super(name, speed, fuelLevel, stoppedAt, (stoppedAt >= 1)); // call parent's class constructor
-        this.hasPropeller = hasPropeller;
+        super(name, speed, fuelLevel, stoppedAt, (stoppedAt >= 1)); // Mengisi variable dari constructor superclass
+        this.hasPropeller = hasPropeller; // Menambah propeller pada construcotr
     }
 
-    @Override
+    @Override // Override method move sesuai dengan subclass
     public void move(){
         System.out.println(getName() + " bergerak di air dengan kecepatan " + getSpeed() + " km/jam " + (hasPropeller ? "dengan baling" : "tanpa baling"));
     }
 
-    @Override
+    @Override // Override method kalkulasi penggunaan bahan bakar
     public double calculateFuelConsumption(double distance){
-        final double FUEL_CONSUMPTION_RATE = 8;
+        final double FUEL_CONSUMPTION_RATE = 8; // inisiasi banyaknya pembuangan bahan bakar
 
-        // Jika kendaraan berhenti maka jarak akan dikurangi titik berhenti. selainnya distance akan tetap
+        // Jika kendaraan berhenti maka destinasi akhirnya berubah menjadi titik berhentinya. selainnya distance akan tetap dari titik awal
         final double finalDistance = this.isStopped ? this.stoppedAt : distance;
-        double fuelConsumed = finalDistance / FUEL_CONSUMPTION_RATE;
-        setFuelLevel(getFuelLevel() - fuelConsumed);
+        double fuelConsumed = finalDistance / FUEL_CONSUMPTION_RATE; // kalkulasi penghabisan bahan bakar
+        setFuelLevel(getFuelLevel() - fuelConsumed); // mengubah variable fuelLevel pada superclass sesuai dengan kalkulasi
 
-        return fuelConsumed;
+        return fuelConsumed; //
     }
 
-    @Override
+    @Override // method digunakan jika input dari argumen memiliki nilai lebih dari 0
     public void stop(int distance, double consumed){
         System.out.println("!!! Emergency stop pada " + getStoppedAt() + " km, dari " + distance + " km, dan konsumsi bahan bakar sebanyak: " + consumed + "%, Sisa: " + getFuelLevel() + "% !!!");
     }
 
-    @Override
-    public void refuel(double amount){
+    @Override // method digunakan untuk mengisi ulang bahan bakar
+    public void refuel(double amount){ // amount = banyaknya bahan bakar yang akan diisi
         setFuelLevel(getFuelLevel() + amount); // nilai fuel level ditambah dengan amount
         System.out.println( getName() + " diisi bahan bakar, level sekarang bertambah menjadi: " + getFuelLevel() + "%");
     }
 
-    @Override
+    @Override // digunakna untuk cek jika nilai bahan bakar kurang dari 20
     public boolean isFuelLow(){
         return getFuelLevel() < 20;
     }

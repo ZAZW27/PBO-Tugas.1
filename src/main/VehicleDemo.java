@@ -13,13 +13,13 @@ public class VehicleDemo {
                         new AirVehicle("Pesawat baling", 300, 100, true, 0) // pesawat blaing (air)
                 };
 
-        for (Vehicle i : vehicles){
+        for (Vehicle i : vehicles){ // loop semua instance dalam array vehicles, i sebagai dummy variabel
             System.out.println("==================================================================");
             i.move(); // memanggil method move pada kendaraan yang di loop
-            double consumed = i.calculateFuelConsumption(DEFAULT_DISTANCE);
+            double consumed = i.calculateFuelConsumption(DEFAULT_DISTANCE); // kalkulasi fuel
 
-            if (i.isStopped()){ // Jika kendaraan ada titik berhenti
-                i.stop(DEFAULT_DISTANCE, consumed);
+            if (i.isStopped()){ // Jika isStopped true atau kendaraan memilki titik berhenti
+                i.stop(DEFAULT_DISTANCE, consumed); // mengeluarkan pesan titik berhenti kendaraan
             }
             else{
                 System.out.println("Konsumsi bahan bakar untuk " + DEFAULT_DISTANCE + " km: " + consumed + "% bahan bakar. Sisa: " + i.getFuelLevel() + "%");
@@ -32,13 +32,13 @@ public class VehicleDemo {
 
             System.out.println("Waktu yang dihabiskan adalah: " + waktuTempuh + " menit" );
 
-            if (i instanceof Refuelable r){ // Jika class implement refuelable
+            if (i instanceof Refuelable r){ // Jika class implement refuelable dan r sebagai dummy variable i (instance yang sedang diloop)
                 if (r.isFuelLow()){ // jika bahan bakar rendah
                     System.out.println("bahan bakar " + i.getName() + " rendah, mengisi ulang...");
-                    r.refuel(DEFAULT_REFUEL_AMOUNT); // refuel
+                    r.refuel(DEFAULT_REFUEL_AMOUNT); // panggil refuel sesuai dengan instance yang di loop
                 }
             }
-            System.out.println();
+            System.out.println(); // spacing
         }
     }
 }

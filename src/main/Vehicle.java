@@ -39,10 +39,12 @@ abstract class Vehicle
     protected void setFuelLevel(double fuelLevel){
         this.fuelLevel = Math.max(0, Math.min(fuelLevel, 100)); // pastika tidak lebih dari 100 atau kurang dari 0
     }
+    // mengubah variable superclass stoppedAt
     protected void setStoppedAt(int stoppedAt){
         this.stoppedAt = stoppedAt;
     }
 
+    // abstract methods
     public abstract void move();
     public abstract double calculateFuelConsumption(double distance);
     public abstract void stop(int distance, double consumed);

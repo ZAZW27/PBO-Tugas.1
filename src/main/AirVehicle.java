@@ -6,7 +6,7 @@ class AirVehicle extends Vehicle{
     // Construtor Airvehicle
     public AirVehicle(String name, int speed, double fuelLevel, boolean hasPropeller, int stoppedAt){
         super(name, speed, fuelLevel, stoppedAt, (stoppedAt >= 1)); // Mengisi variable dari constructor superclass
-        this.hasPropeller = hasPropeller; // assign propeller
+        this.hasPropeller = hasPropeller; // menambah propeller pada constructor
     }
 
     @Override // Override method move sesuai dengan subclass
