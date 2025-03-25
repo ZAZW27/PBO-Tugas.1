@@ -12,6 +12,7 @@ class LandVehicle extends Vehicle implements Refuelable {
     @Override // Override method move sesuai dengan subclass
     public void move(){
         System.out.println(getName() + " Bergerak di darat dengan " + wheels + " roda pada kecepatan " + getSpeed() + " km/jam.");
+        System.out.println("Dengan bahan bakar sebanyak " + getFuelLevel() + "%\n-");
     }
 
     @Override // Override method kalkulasi penggunaan bahan bakar
@@ -28,7 +29,12 @@ class LandVehicle extends Vehicle implements Refuelable {
 
     @Override // method digunakan jika input dari argumen memiliki nilai lebih dari 0
     public void stop(int distance, double consumed){
-        System.out.println("!!! Emergency stop pada " + getStoppedAt() + " km, dari " + distance + " km, dan konsumsi bahan bakar sebanyak: " + consumed + "%, Sisa: " + getFuelLevel() + "% !!!");
+        if (isStopped()){
+            System.out.println("!!! Emergency stop pada " + getStoppedAt() + " km, dari " + distance + " km, dan konsumsi bahan bakar sebanyak: " + consumed + "%, Sisa: " + getFuelLevel() + "% !!!");
+        }
+        else{
+            System.out.println(getName() + " berhasil berhenti tepat pada tujuan");
+        }
     }
 
     @Override // method digunakan untuk mengisi ulang bahan bakar

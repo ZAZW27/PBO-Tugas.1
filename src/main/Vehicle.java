@@ -43,6 +43,7 @@ abstract class Vehicle
     protected void setStoppedAt(int stoppedAt){
         this.stoppedAt = stoppedAt;
     }
+    protected void setIsStopped(boolean isStopped){ this.isStopped = isStopped; }
 
     // abstract methods
     public abstract void move();
